@@ -15,7 +15,7 @@ angular.module("inforTIC", []).controller("inforticController", function ($scope
             mensagem: $scope.emailObject.mensagem
         };
 
-        if(validaNome(data) && validaEmail(data)){
+        if(validaNome(data) && validaEmail(data) && validaMensagem(data)){
             enviar(data)    
         }
     }
@@ -49,6 +49,17 @@ angular.module("inforTIC", []).controller("inforticController", function ($scope
             return true;
         }else{
             alert("Email inválido")
+        }
+    }
+
+    function validaMensagem(data){
+       let list = [];
+       list = data.mensagem.split(" ");
+        if(list.length >= 5){
+            return true;
+        }else{
+            alert("A sua mensagem precisa ter pelo menos 5 palavras!")
+            return false;
         }
     }
 });
